@@ -15,10 +15,10 @@ App({
   },
   globalData: {
     userInfo: null,
-    stories: [
-    { title: "DB", description: "How to get MUSICIANS BY TRACK LIST????" },
-    { title: "HTML/CSS", description: "Landing Page" },
-    { title: "JS", description: "StimulusJS... wooops :(" }
-   ]
+    env: 'dev',
+    host: {
+      dev: "http://localhost:3000/api/v1",
+      prod: "......"
+    }
   }
 })

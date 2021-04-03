@@ -1,0 +1,23 @@
+form {
+  padding: 50rpx;
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.section {
+  box-shadow: 2rpx 2rpx 10rpx lightgrey;
+  margin-top: 50rpx;
+  padding: 20rpx;
+}
+
+.btn-area {
+  margin-top: 50rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  width: 20vw;
+}

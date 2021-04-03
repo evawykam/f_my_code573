@@ -32,3 +32,15 @@
   background: #1EDD88;
   transition: background 0.3s ease;
 }
+
+.row-center {
+  display: flex; justify-content: space-between; align-items: center;
+}
+
+.action-btn {
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 20rpx rgba(0,0,0,0.3);
+  padding: 15rpx;
+  width: 50rpx; height: 50rpx;
+}

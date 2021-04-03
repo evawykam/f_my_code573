@@ -1,6 +1,20 @@
 <view class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url(https://picsum.photos/200/500);">
   <view class="container">
     <view class="h1">{{story.title}}</view>
-    <view class="p">{{story.description}}</view>   
+    <view class="small text-white">By {{story.author}}</view>
+    <view class="p">{{story.body}}</view>   
+
+    <view class="row-center" style="margin-top: 4rpx; width: 30%">
+      <view bindtap="edit" class="action-btn">
+        <image src="/images/edit.svg" style="width: 100%; height: 100%"></image>
+      </view>
+
+      <view bindtap="destroy" class="action-btn">
+        <image src="/images/delete.svg" style="width: 100%; height: 100%"></image>
+      </view>
+      
+    </view>
   </view>
+
+  
 </view>

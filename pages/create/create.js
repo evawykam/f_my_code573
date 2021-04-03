@@ -1,4 +1,5 @@
 // pages/create/create.js
+const app = getApp()
 Page({
 
   /**
@@ -10,11 +11,22 @@ Page({
 
   formSubmit: function(event) {
     const story = event.detail.value
-    getApp().globalData.stories.push(story)
-    console.log(getApp().globalData)
+    
+    const url = app.globalData.host[app.globalData.env]
+    const page = this
 
-    wx.reLaunch({
-      url: '/pages/stories/stories',
+    wx.request({
+      url: `${url}/stories`,
+      method: 'POST',
+      data: { story: story },
+      success(res) {
+        console.log('update res', res)
+        if (res.statusCode === 200) {
+          wx.switchTab({
+            url: '/pages/stories/stories'
+          })
+        }
+      }
     })
   },
 

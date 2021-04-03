@@ -1,69 +1,43 @@
-// pages/show/show.js
-const app = getApp();
-
+// pages/edit/edit.js
+const app = getApp()
 Page({
 
+  /**
+   * Page initial data
+   */
   data: {
 
   },
 
-  onLoad: function (options) {
-    
-  },
+  formSubmit: function(event) {
+    console.log('ediit', event)
+    const story = event.detail.value
+    // { title:..., body:..., author: ...}
 
-  edit() {
-    const id = this.options.id
-    wx.navigateTo({
-      url: `/pages/edit/edit?id=${id}`,
-    })
-  },
-
-  destroy() {
     const id = this.options.id
     const url = app.globalData.host[app.globalData.env]
     const page = this
 
-    wx.showModal({
-      title: 'Are you sure?',
-      showCancel: true,
-      cancelText: 'No',
-      confirmText: 'Yes',
-      success (res) {
-        if (res.confirm) {
-          console.log('"OK" is tapped')
-          wx.request({
-            url: `${url}/stories/${id}`,
-            method: 'DELETE',
-            success(res) {
-              console.log(res)
-              if (res.statusCode === 200) {
-                wx.navigateBack({
-                  delta: 1,
-                })
-              }
-            }
+    wx.request({
+      url: `${url}/stories/${id}`,
+      method: 'PUT',
+      data: { story: story },
+      success(res) {
+        console.log('update res', res)
+        if (res.statusCode === 200) {
+          wx.navigateBack({
+            delta: 1,
           })
-        } else if (res.cancel) {
-          console.log('"Cancel" is tapped')
         }
       }
     })
     
-    
   },
 
   /**
-   * Lifecycle function--Called when page is initially rendered
+   * Lifecycle function--Called when page load
    */
-  onReady: function () {
-
-  },
-
-  /**
-   * Lifecycle function--Called when page show
-   */
-  onShow: function () {
-    // options = { id: 1 }
+  onLoad: function (options) {
     console.log(this.options)
     const id = this.options.id
     const url = app.globalData.host[app.globalData.env]
@@ -79,6 +53,20 @@ Page({
         page.setData(res.data)
       }
     })
+  },
+
+  /**
+   * Lifecycle function--Called when page is initially rendered
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * Lifecycle function--Called when page show
+   */
+  onShow: function () {
+
   },
 
   /**

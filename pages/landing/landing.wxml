@@ -3,6 +3,6 @@
     <view class="h1">F*&K My Code! 🤬</view>
     <view class="p">Those code nightmares we've all had (in dreams and in reality)</view>
     <view class="btn btn-flat" bindtap="goToStories">Share now</view>
-    <view>P.S. Bitcoing tomorrow will cost {{tomorrowsBitcoinPrice}}</view>
+    <!-- <button bindgetuserinfo="goToStories" class="btn btn-flat">Go to stories</button> -->
   </view>
 </view>

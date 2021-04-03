@@ -1,11 +1,11 @@
 {
   "pages":[
     "pages/landing/landing",
-    "pages/index/index",
-    "pages/logs/logs",
     "pages/stories/stories",
     "pages/create/create",
-    "pages/show/show"
+    "pages/edit/edit",
+    "pages/show/show",
+    "pages/test/test"
   ],
   "window":{
     "backgroundTextStyle":"light",

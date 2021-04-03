@@ -11,6 +11,33 @@ Page({
     
   },
 
+  submitComment(e) {
+    console.log(e)
+    const comment = e.detail.value
+    console.log({comment})
+
+    const id = this.options.id
+    const url = app.globalData.host[app.globalData.env]
+    const page = this
+
+    wx.request({
+      url: `${url}/stories/${id}/comments`,
+      method: 'POST',
+      data: { comment: comment },
+      success(res) {
+        console.log(res)
+        const story = page.data.story
+        story.comments.push(res.data.comment)
+        page.setData({story})
+        page.setData({
+          name: '', content: ''
+        })
+      }
+    })
+
+
+  },
+
   edit() {
     const id = this.options.id
     wx.navigateTo({

@@ -1,20 +1,54 @@
 <view class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url(https://picsum.photos/200/500);">
   <view class="container">
     <view class="h1">{{story.title}}</view>
-    <view class="small text-white">By {{story.author}}</view>
-    <view class="p">{{story.body}}</view>   
+    <view class="small text-white">By {{story.author}}</view>  
+  </view>
+</view>
 
-    <view class="row-center" style="margin-top: 4rpx; width: 30%">
-      <view bindtap="edit" class="action-btn">
-        <image src="/images/edit.svg" style="width: 100%; height: 100%"></image>
-      </view>
-
-      <view bindtap="destroy" class="action-btn">
-        <image src="/images/delete.svg" style="width: 100%; height: 100%"></image>
-      </view>
-      
+<view class="container" style="padding: 20rpx;">
+     
+  <view class="row-center" style="margin-top: 40rpx; width: 30%">
+    <view bindtap="edit" class="action-btn">
+      <image src="/images/edit.svg" style="width: 100%; height: 100%"></image>
     </view>
+
+    <view bindtap="destroy" class="action-btn">
+      <image src="/images/delete.svg" style="width: 100%; height: 100%"></image>
+    </view>
+    
   </view>
 
+  <view style="margin-top: 40rpx;" class="">
+    <text>{{story.body}}</text>
+  </view>  
+
+  <view style="margin-top: 60rpx; font-weight: bold; font-size: 32rpx;">
+    COMMENTS
+  </view>
+
+  <view style="margin-top: 40rpx;">
+    <view style="margin-top: 20rpx;" wx:for="{{story.comments}}" wx:for-item="comment" wx:key="index">
+      <view>{{comment.content}}</view>
+      <view class="small">{{comment.name}}</view>
+    </view>
+  </view>
+</view>
+ 
+<view class="container" style="padding: 20rpx;">
+  <form bindsubmit="submitComment">
+    <view class="section">
+      <view class="section__title">Author</view>
+      <input name="name" placeholder="" value="{{name}}" />
+    </view>
   
+    <view class="section">
+      <view class="section__title">Content</view>
+      <textarea style="width: 100%;" maxlength="-1" name="content" placeholder=""  value="{{content}}" />
+    </view>
+
+    <view class="btn-area">
+      <button size='mini' type='primary' form-type="submit">Submit</button>
+      <button size='mini' form-type="reset">Reset</button>
+    </view>
+  </form>
 </view>
